@@ -1,0 +1,11 @@
+[Unit]
+Description=Userify SSH Server
+Requires=postfix.service network-online.target mariadb.service
+After=postfix.service network-online.target mariadb.service
+
+[Service]
+Type=simple
+ExecStart=/opt/userify-ssh-server/api.py
+
+[Install]
+WantedBy=multi-user.target
