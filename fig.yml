@@ -1,5 +1,5 @@
 userify:
-  build: spistresci/userify
+  build: .
   ports:
     - "443:443"
 
