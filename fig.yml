@@ -1,0 +1,25 @@
+userify:
+  build: spistresci/userify
+  ports:
+    - "443:443"
+
+mailserver:
+  image: elsdoerfer/exim-sender
+  ports:
+    - "25"
+  net: "container:userify_userify_1"
+
+data:
+  image: busybox
+  volumes:
+    - /var/lib/mysql
+
+zdb:
+  image: mariadb
+  environment:
+    - MYSQL_ROOT_PASSWORD=secret
+  ports:
+    - "3306"
+  net: "container:userify_userify_1"
+  volumes_from: 
+    - data
